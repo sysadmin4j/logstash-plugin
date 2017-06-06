@@ -53,7 +53,7 @@ public class SyslogDaoTest {
     verify(mockUdpSyslogMessageSender, times(1)).setSyslogServerPort(port);
     verify(mockUdpSyslogMessageSender, times(1)).setDefaultFacility(Facility.USER);
     verify(mockUdpSyslogMessageSender, times(1)).setDefaultSeverity(Severity.INFORMATIONAL);
-    verify(mockUdpSyslogMessageSender, times(1)).setMessageFormat(MessageFormat.RFC_5424);
+    verify(mockUdpSyslogMessageSender, times(1)).setMessageFormat(MessageFormat.RFC_3164);
   }
 
   // Send a real Syslog message to Logstash.
