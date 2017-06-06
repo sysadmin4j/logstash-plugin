@@ -13,3 +13,6 @@ work
 .classpath
 .project
 .settings/
+
+# Logstash generated logs
+src/test/resources/logs/syslog-test.log
