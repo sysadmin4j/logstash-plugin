@@ -35,4 +35,4 @@ branches:
   except:
     - /^test.*/i
 
-script: "mvn install -DskipTests=false"
+script: "mvn verify -DskipTests=false"
