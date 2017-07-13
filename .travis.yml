@@ -20,6 +20,7 @@ before_install:
 #  - sudo apt-get update
 #  - sudo apt-get -y install docker-ce 
   - sudo apt-cache madison docker-ce
+  - sudo apt-get -y --only-upgrade install docker-ce
   - docker --version
 #  - sudo apt-get update
 #  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
