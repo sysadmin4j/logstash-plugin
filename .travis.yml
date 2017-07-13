@@ -1,3 +1,5 @@
+group: deprecated-2017Q3
+
 env:
   global:
     - LOGSTASH_DOCKER_IMAGE="logstash/logstash"
