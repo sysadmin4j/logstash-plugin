@@ -19,7 +19,7 @@ before_install:
 #  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 #  - sudo apt-get update#
 #  - sudo apt-get -y install docker-ce 
-#  - sudo apt-cache madison docker-ce
+  - sudo apt-cache madison docker-engine
 #  - sudo apt-get -y --only-upgrade install docker-ce
   - docker --version
   - sudo apt-get remove -y docker-ce
