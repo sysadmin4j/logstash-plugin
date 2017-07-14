@@ -67,5 +67,4 @@ branches:
     - /^test.*/i
 
 script:
-  - ls -al ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
   - "mvn verify -DskipIntegrationTests=false"
