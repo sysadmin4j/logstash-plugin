@@ -27,6 +27,8 @@ before_install:
 #  - sudo apt-get install  -y docker-engine
 #  - sudo apt-get update
 #  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
+  - sudo apt-get install -y conntrack
+  - sudo conntrack -D -p udp
   - "mvn clean package --quiet"
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
   - "docker pull ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}"
@@ -37,8 +39,6 @@ before_install:
     -p 127.0.0.1:514:5555/udp
     -e ${LOGSTASH_DOCKER_ENV}
     ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}
-  - sudo apt-get install -y conntrack
-  - sudo conntrack -D -p udp
 
 language: java
 
@@ -51,4 +51,6 @@ branches:
   except:
     - /^test.*/i
 
-script: "mvn verify -DskipIntegrationTests=false"
+script:
+- "mvn verify -DskipIntegrationTests=false"
+- "docker logs `docker ps | grep logstash | awk '{ print $1}'`"
