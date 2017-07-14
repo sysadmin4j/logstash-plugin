@@ -34,7 +34,7 @@ before_install:
 #  - sudo apt-get install -y conntrack
 #  - sudo conntrack -D -p udp
   - sudo /sbin/ifconfig
-  - sudo sysctl -p
+  - sudo sysctl -a
   - sudo iptables -L
 #  - "mvn clean package --quiet"
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
