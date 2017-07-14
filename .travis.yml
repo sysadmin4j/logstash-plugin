@@ -42,6 +42,8 @@ before_install:
   - docker ps
   - "docker logs `docker ps | grep logstash | awk '{ print $1}'`" 
   - ls -al ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
+  - sudo cat /etc/hosts
+  - netstat -ant | grep 514
 
 language: java
 
