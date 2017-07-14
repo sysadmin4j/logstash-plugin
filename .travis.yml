@@ -1,4 +1,4 @@
-#group: deprecated-2017Q2
+group: deprecated-2017Q2
 
 env:
   global:
@@ -19,12 +19,13 @@ before_install:
 #  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 #  - sudo apt-get update#
 #  - sudo apt-get -y install docker-ce 
-
 #  - sudo apt-cache search docker-engine
 #  - sudo apt-cache show docker-engine
-  - sudo apt-get update
-  - sudo apt-get -y --only-upgrade install docker-ce
-  - sudo service docker restart
+####
+#  - sudo apt-get update
+#  - sudo apt-get -y --only-upgrade install docker-ce
+#  - sudo service docker restart
+####
 #  - docker --version
 #  - sudo apt-get remove -y docker-ce
 #  - sudo apt-get install  -y docker-engine
