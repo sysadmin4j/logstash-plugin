@@ -19,9 +19,12 @@ before_install:
 #  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 #  - sudo apt-get update#
 #  - sudo apt-get -y install docker-ce 
+
 #  - sudo apt-cache search docker-engine
 #  - sudo apt-cache show docker-engine
-#  - sudo apt-get -y --only-upgrade install docker-ce
+  - sudo apt-get update
+  - sudo apt-get -y --only-upgrade install docker-ce
+  - sudo service docker restart
 #  - docker --version
 #  - sudo apt-get remove -y docker-ce
 #  - sudo apt-get install  -y docker-engine
@@ -42,7 +45,7 @@ before_install:
     ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}
   - sleep 10
   - docker ps
-  - docker --verison
+  - docker --version
   - "docker logs `docker ps | grep logstash | awk '{ print $1}'`" 
   - ls -al ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
   - touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/toto
