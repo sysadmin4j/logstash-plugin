@@ -58,6 +58,8 @@ before_install:
   - sudo cat /etc/hosts
   - sudo iptables -L -t nat
   - "netstat -an"
+  - cat /var/log/messages
+  - ls -al /var/log/
 
 language: java
 
