@@ -23,7 +23,7 @@ public class SyslogDaoTestIT{
   String logfile = "target/logs/syslog-test.log";
   String logmessage = "";
   String logcontent = "";
-  int port = 514;
+  int port = 5555;
   int logstashTimeout = 15;
   UdpSyslogMessageSender udpSyslogMessageSender = new UdpSyslogMessageSender();
   	  
