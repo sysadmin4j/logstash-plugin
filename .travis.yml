@@ -1,4 +1,4 @@
-#group: deprecated-2017Q2
+group: deprecated-2017Q2
 
 env:
   global:
@@ -34,7 +34,7 @@ before_install:
 #  - sudo apt-get install -y conntrack
 #  - sudo conntrack -D -p udp
   - sudo /sbin/ifconfig
-#  - sudo sysctl -a
+  - "sudo sysctl -a | grep udp"
   - sudo iptables -L -t nat
 #  - "mvn clean package --quiet"
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
