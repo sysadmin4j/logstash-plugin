@@ -38,6 +38,13 @@ before_install:
   - sudo iptables -L -t nat
 #  - "mvn clean package --quiet"
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
+##########
+# TEST UDP
+##########
+  - docker run -d -p 127.0.0.1:5678:5678/udp ksdn117/tcp-udp-test
+  - timeout echo -n "test" | nc -u 127.0.0.1 5678
+  - "docker logs `docker ps | grep tcp-udp-test | awk '{ print $1}'`" 
+##########
 #  - "docker pull ubuntu"
 #  - "docker run --name ubuntu_bash  -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}:/tmp/logs --rm -i -t ubuntu touch /tmp/logs/ubuntu.test"
   - "docker pull ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}"
