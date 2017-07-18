@@ -44,7 +44,8 @@ before_install:
   - sudo apt-get -y install netcat
   - docker pull mendhak/udp-listener
   - docker run -d -p 127.0.0.1:5005:5005/udp --name udp-listener mendhak/udp-listener
-  - echo -n test | nc -u 127.0.0.1 5005 &"
+  - echo -n test | nc -u 127.0.0.1 5005 &
+  - echo -n test2 | nc -u localhost 5005 &
   - sleep 10
   - docker logs udp-listener 
 ##########
