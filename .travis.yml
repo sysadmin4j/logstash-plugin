@@ -41,6 +41,7 @@ before_install:
 ##########
 # TEST UDP
 ##########
+  - sudo apt-get -y install nc
   - docker pull ksdn117/tcp-udp-test
   - docker run -d -p 127.0.0.1:5678:5678/udp ksdn117/tcp-udp-test
   - timeout 10 "echo -n test | nc -u 127.0.0.1 5678"
