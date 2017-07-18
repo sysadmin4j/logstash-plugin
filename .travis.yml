@@ -62,7 +62,7 @@ before_install:
   - docker ps
   - docker --version
   - "docker logs logstash" 
-  - docker exec -it udp-listener netstat -an
+  - docker exec -it logstash netstat -an
   - "docker port `docker ps | grep logstash | awk '{ print $1}'`"
   - sudo iptables -L -t nat
   - ls -al ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
