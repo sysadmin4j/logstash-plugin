@@ -83,4 +83,4 @@ branches:
     - /^test.*/i
 
 script:
-  - "mvn verify -DskipIntegrationTests=false"
+  - "mvn verify -DskipIntegrationTests=false -Djava.net.preferIPv4Stack=true"
