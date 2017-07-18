@@ -42,13 +42,11 @@ before_install:
 # TEST UDP
 ##########
   - sudo apt-get -y install netcat
-  - whereis nc
-  - whereis echo
-  - docker pull ksdn117/tcp-udp-test
-  - docker run -d -p 127.0.0.1:5678:5678/udp ksdn117/tcp-udp-test
-  - "/bin/echo -n test | /bin/nc -u 127.0.0.1 5678 &"
+  - docker pull mendhak/udp-listener
+  - docker run -d -p 127.0.0.1:5005:5005/udp --name udp-listener mendhak/udp-listener
+  - echo -n test | nc -u 127.0.0.1 5005 &"
   - sleep 10
-  - "docker logs `docker ps | grep tcp-udp-test | awk '{ print $1}'`" 
+  - docker logs udp-listener 
 ##########
 #  - "docker pull ubuntu"
 #  - "docker run --name ubuntu_bash  -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}:/tmp/logs --rm -i -t ubuntu touch /tmp/logs/ubuntu.test"
