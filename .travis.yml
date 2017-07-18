@@ -46,7 +46,8 @@ before_install:
   - whereis echo
   - docker pull ksdn117/tcp-udp-test
   - docker run -d -p 127.0.0.1:5678:5678/udp ksdn117/tcp-udp-test
-  - timeout 10 "/bin/echo -n test | /bin/nc -u 127.0.0.1 5678"
+  - "/bin/echo -n test | /bin/nc -u 127.0.0.1 5678 &"
+  - sleep 10
   - "docker logs `docker ps | grep tcp-udp-test | awk '{ print $1}'`" 
 ##########
 #  - "docker pull ubuntu"
