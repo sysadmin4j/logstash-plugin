@@ -51,12 +51,13 @@ before_install:
   - docker logs udp-listener 
 ##########
   - "docker pull ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}"
-  - sudo docker run -d
+  - docker run -d
     -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_PIPELINE_DIR}:/usr/share/logstash/pipeline
     -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}:/tmp/logs
     -p 127.0.0.1:5555:5555/udp
     -e ${LOGSTASH_DOCKER_ENV}
     --sysctl net.ipv6.conf.all.disable_ipv6=1
+    --user travis
     --name logstash
     ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}
 ##########
@@ -67,6 +68,7 @@ before_install:
   - docker exec -it logstash id
   - docker exec -it logstash ls -al /tmp/logs
   - docker exec -it logstash touch /tmp/logs/touch
+  - whoami
 ##########
   - docker ps
   - docker --version
