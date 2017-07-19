@@ -52,7 +52,9 @@ before_install:
   - sudo iptables -L -t nat
 #  - "mvn clean package --quiet"
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
-  - "sudo chown -R 1000:1000 ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
+  - "touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syslog-test.log"
+  - "sudo chown 1000:travis ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syslog-test.log"
+  - "sudo chmod g+w ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syslog-test.log"
 ##########
 # TEST UDP
 ##########
