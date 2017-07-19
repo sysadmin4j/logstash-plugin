@@ -33,6 +33,7 @@ before_install:
 #  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
 #  - sudo apt-get install -y conntrack
 #  - sudo conntrack -D -p udp
+  - sudo cat /etc/docker/daemon.json
   - sudo /sbin/ifconfig
   - "sudo sysctl -a"
   - sudo iptables -L -t nat
