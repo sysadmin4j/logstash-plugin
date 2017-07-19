@@ -35,7 +35,7 @@ before_install:
 #  - sudo conntrack -D -p udp
   - ls -al /etc
   - sudo ls -al /etc/docker
-  - sudo cat /etc/docker/daemon.json
+  - sudo cat /etc/docker/key.json
   - sudo /sbin/ifconfig
   - "sudo sysctl -a"
   - sudo iptables -L -t nat
