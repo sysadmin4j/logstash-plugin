@@ -37,7 +37,7 @@ before_install:
   - sudo ls -al /etc/docker
   - sudo cat /etc/docker/key.json
   - sudo cat /etc/subuid
-#  - sudo echo \{\"userns-remap\": \"travis\"\}" > /etc/docker/daemon.json
+  - sudo |- echo "{\"userns-remap\": \"travis\"}" > /etc/docker/daemon.json
   - sudo service docker restart
   - sudo cat /etc/default/docker
   - sudo ps -aux | grep docker
