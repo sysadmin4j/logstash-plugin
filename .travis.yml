@@ -36,11 +36,13 @@ before_install:
   - ls -al /etc
   - sudo ls -al /etc/docker
   - sudo cat /etc/docker/key.json
+  - sudo echo {\"userns-remap\": \"travis\"} > /etc/docker/daemon.json
+  - sudo service docker restart
   - sudo cat /etc/default/docker
   - sudo ps -aux | grep docker
   - sudo cat /lib/systemd/system/docker.service
-  - sudo ls -al /etc/systemd/system/docker.service.d
-  - sudo ls -al /etc/default/docker
+#  - sudo ls -al /etc/systemd/system/docker.service.d
+#  - sudo ls -al /etc/default/docker
   - sudo /sbin/ifconfig
   - "sudo sysctl -a"
   - sudo iptables -L -t nat
