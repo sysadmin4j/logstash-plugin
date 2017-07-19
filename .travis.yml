@@ -51,7 +51,7 @@ before_install:
   - docker logs udp-listener 
 ##########
   - "docker pull ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}"
-  - docker run -d
+  - sudo docker run -d
     -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_PIPELINE_DIR}:/usr/share/logstash/pipeline
     -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}:/tmp/logs
     -p 127.0.0.1:5555:5555/udp
@@ -63,6 +63,7 @@ before_install:
   - sleep 30
   - echo -n test3 | nc -u 127.0.0.1 5555 &
   - echo -n test4 | nc -u localhost 5555 &
+  - id
   - docker exec -it logstash id
   - docker exec -it logstash ls -al /tmp/logs
   - docker exec -it logstash touch /tmp/logs/touch
