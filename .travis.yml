@@ -90,7 +90,6 @@ before_install:
   - "docker port `docker ps | grep logstash | awk '{ print $1}'`"
   - sudo iptables -L -t nat
   - ls -al ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
-  - touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/toto
   - sudo cat /etc/hosts
   - sudo iptables -L -t nat
   - "netstat -an"
