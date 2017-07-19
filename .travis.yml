@@ -1,4 +1,4 @@
-#group: deprecated-2017Q2
+group: deprecated-2017Q2
 
 env:
   global:
@@ -57,7 +57,6 @@ before_install:
     -p 127.0.0.1:5555:5555/udp
     -e ${LOGSTASH_DOCKER_ENV}
     --sysctl net.ipv6.conf.all.disable_ipv6=1
-    --userns-remap travis
     --name logstash
     ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}
 ##########
