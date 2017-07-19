@@ -34,7 +34,7 @@ before_install:
 #  - sudo apt-get install -y conntrack
 #  - sudo conntrack -D -p udp
   - ls -al /etc
-  - ls -al /etc/docker
+  - sudo ls -al /etc/docker
   - sudo cat /etc/docker/daemon.json
   - sudo /sbin/ifconfig
   - "sudo sysctl -a"
