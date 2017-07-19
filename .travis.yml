@@ -37,6 +37,7 @@ before_install:
   - sudo ls -al /etc/docker
   - sudo cat /etc/docker/key.json
   - sudo cat /etc/default/docker
+  - sudo ls -al /etc/systemd/system/docker.service.d
   - sudo ls -al /etc/default/docker
   - sudo /sbin/ifconfig
   - "sudo sysctl -a"
