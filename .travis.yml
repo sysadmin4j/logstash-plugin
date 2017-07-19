@@ -15,46 +15,12 @@ services:
   - docker
 
 before_install:
-#  - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-#  - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-#  - sudo apt-get update#
-#  - sudo apt-get -y install docker-ce 
-#  - sudo apt-cache search docker-engine
-#  - sudo apt-cache show docker-engine
-####
-#  - sudo apt-get update
-#  - sudo apt-get -y --only-upgrade install docker-ce
-#  - sudo service docker restart
-####
-#  - docker --version
-#  - sudo apt-get remove -y docker-ce
-#  - sudo apt-get install  -y docker-engine
-#  - sudo apt-get update
-#  - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-engine
-#  - sudo apt-get install -y conntrack
-#  - sudo conntrack -D -p udp
-  - ls -al /etc
-  - sudo ls -al /etc/docker
-  - sudo cat /etc/docker/key.json
-  - sudo cat /etc/subuid
-  - sudo cat /home/travis/.travis/job_stages
-#  - sudo service docker stop 
-#  - dockerd --userns-remap="travis" &
-#  - 'sudo echo ''{"userns-remap": "travis"}'' > /etc/docker/daemon.json'
-#  - sudo service docker restart
-  - sudo cat /etc/default/docker
-  - sudo ps -aux | grep docker
-  - sudo cat /lib/systemd/system/docker.service
-#  - sudo ls -al /etc/systemd/system/docker.service.d
-#  - sudo ls -al /etc/default/docker
-  - sudo /sbin/ifconfig
-  - "sudo sysctl -a"
-  - sudo iptables -L -t nat
 #  - "mvn clean package --quiet"
+#
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
-  - "touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syslog-test.log"
-  - "sudo chown 1000:travis ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syslog-test.log"
-  - "sudo chmod g+w ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syslog-test.log"
+#  - "touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syddslog-test.log"
+  - "sudo chown -R 1000:travis ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
+  - "sudo chmod -R g+ws ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
 ##########
 # TEST UDP
 ##########
@@ -73,7 +39,6 @@ before_install:
     -v ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}:/tmp/logs
     -p 127.0.0.1:5555:5555/udp
     -e ${LOGSTASH_DOCKER_ENV}
-    --sysctl net.ipv6.conf.all.disable_ipv6=1
     --name logstash
     ${LOGSTASH_DOCKER_REGISTRY}/${LOGSTASH_DOCKER_IMAGE}:${LOGSTASH_DOCKER_VERSION}
 ##########
