@@ -83,7 +83,7 @@ before_install:
   - id
   - docker exec -it logstash id
   - docker exec -it logstash ls -al /tmp/logs
-  - docker exec -it logstash touch /tmp/logs/touch
+#  - docker exec -it logstash touch /tmp/logs/touch
   - whoami
 ##########
   - docker ps
