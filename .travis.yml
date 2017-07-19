@@ -19,8 +19,10 @@ before_install:
 #
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
 #  - "touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syddslog-test.log"
-  - "sudo chown -R 1000:travis ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
-  - "sudo chmod -R g+ws ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
+#  - "sudo chown -R 1000:travis ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
+#  - "sudo chmod -R g+ws ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
+  - sudo mount
+  - sudo setfacl -R -m u:1000:rw- ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
 ##########
 # TEST UDP
 ##########
