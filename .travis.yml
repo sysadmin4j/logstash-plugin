@@ -36,6 +36,8 @@ before_install:
   - ls -al /etc
   - sudo ls -al /etc/docker
   - sudo cat /etc/docker/key.json
+  - sudo cat /etc/default/docker
+  - sudo ls -al /etc/default/docker
   - sudo /sbin/ifconfig
   - "sudo sysctl -a"
   - sudo iptables -L -t nat
