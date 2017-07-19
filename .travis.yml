@@ -101,8 +101,9 @@ language: java
 
 jdk:
   - oraclejdk8
-  - oraclejdk7
+#  - oraclejdk7
   - openjdk7
+  - openjdk8
 
 branches:
   except:
