@@ -63,6 +63,8 @@ before_install:
   - sleep 30
   - echo -n test3 | nc -u 127.0.0.1 5555 &
   - echo -n test4 | nc -u localhost 5555 &
+  - docker exec -it logstash id
+  - docker exec -it logstash ls -al /tmp/logs
   - docker exec -it logstash touch /tmp/logs/touch
 ##########
   - docker ps
