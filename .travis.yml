@@ -8,6 +8,7 @@ env:
     - LOGSTASH_DOCKER_ENV="XPACK_MONITORING_ENABLED=false"
     - LOGSTASH_PIPELINE_DIR="src/test/resources/logstash/pipeline"
     - LOGSTASH_LOGS_DIR="target/logs"
+    - LOGSTASH_LOGFILE="syslog-test.log"
 
 sudo: required
 
@@ -18,11 +19,9 @@ before_install:
 #  - "mvn clean package --quiet"
 #
   - "mkdir -p ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
-#  - "touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/syddslog-test.log"
-#  - "sudo chown -R 1000:travis ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
-#  - "sudo chmod -R g+ws ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}"
-  - sudo mount
-  - sudo setfacl -R -m u:1000:rw- ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}
+  - "touch ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/${LOGSTASH_LOGFILE}"
+  - "sudo chown 1000:$GID ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/${LOGSTASH_LOGFILE}"
+  - "sudo chmod g+w ${TRAVIS_BUILD_DIR}/${LOGSTASH_LOGS_DIR}/${LOGSTASH_LOGFILE}"
 ##########
 # TEST UDP
 ##########
